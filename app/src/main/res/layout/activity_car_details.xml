@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.CarDetailsActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/dimen_60dp"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_60dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/rel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/background_grey">
+
+                    <FrameLayout
+                        android:id="@+id/main_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.viewpager.widget.ViewPager
+                            android:id="@+id/viewpager"
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp"
+                            android:background="@drawable/round_background">
+
+                        </androidx.viewpager.widget.ViewPager>
+
+
+                        <ImageView
+                            android:id="@+id/image"
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp"
+                            android:background="@drawable/round_background"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/holder"
+                            android:visibility="visible" />
+
+
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:id="@+id/card_list"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/main_layout"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="@dimen/dimen_45dp"
+                        android:layout_marginTop="-20dp"
+                        android:layout_marginEnd="@dimen/dimen_45dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyl_car"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dimen_70dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/dimen_20dp"
+                            android:layout_marginEnd="@dimen/dimen_20dp"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/images_layout" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_car_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rel"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/lay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/background_grey"
+                        android:paddingStart="@dimen/dimen_10dp"
+                        android:paddingTop="@dimen/dimen_5dp"
+                        android:paddingEnd="@dimen/dimen_10dp"
+                        android:paddingBottom="@dimen/dimen_8dp">
+
+                        <TextView
+                            android:id="@+id/txt_brand_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/dimen_5dp"
+                            android:fontFamily="@font/nunito_reg"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_14sp" />
+
+
+                        <TextView
+                            android:id="@+id/txt_car_specification"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txt_brand_name"
+                            android:layout_marginBottom="@dimen/dimen_5dp"
+                            android:fontFamily="@font/nunito_reg"
+                            android:text=""
+                            android:textColor="@color/my_theme"
+                            android:textSize="@dimen/text_size_12sp" />
+
+                        <LinearLayout
+                            android:id="@+id/ratings_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txt_car_specification"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                android:id="@+id/car_badge"
+                                android:layout_width="@dimen/dimen_50dp"
+                                android:layout_height="@dimen/dimen_18dp"
+                                android:layout_marginTop="@dimen/dimen_5dp"
+                                android:layout_marginEnd="@dimen/layout_space_small"
+                                android:background="@drawable/button_background"
+                                android:backgroundTint="@color/black_light"
+                                android:fontFamily="@font/nunito_reg"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:paddingStart="2dp"
+                                android:paddingTop="@dimen/dimen_2dp"
+                                android:paddingEnd="2dp"
+                                android:paddingBottom="@dimen/dimen_2dp">
+
+                                <androidx.appcompat.widget.AppCompatRatingBar
+                                    android:id="@+id/simpleRatingBar"
+                                    style="@style/Widget.AppCompat.RatingBar.Small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="@dimen/dimen_2dp"
+                                    android:layout_marginEnd="@dimen/dimen_2dp"
+                                    android:layout_marginBottom="0.5dp"
+                                    android:backgroundTint="@color/white"
+                                    android:isIndicator="false"
+                                    android:numStars="1"
+                                    android:padding="0dp"
+                                    android:progressTint="@color/yellow"
+                                    android:rating="1"
+                                    android:scaleX="0.75"
+                                    android:scaleY="0.75"
+                                    android:theme="@style/RatingBar" />
+
+                                <TextView
+                                    android:id="@+id/rating_value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginEnd="@dimen/dimen_5dp"
+                                    android:gravity="center"
+                                    android:text=""
+                                    android:textColor="@color/my_theme"
+                                    android:textSize="@dimen/text_size_10sp" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txt_ratings"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/txt_car_specification"
+                                android:layout_marginTop="@dimen/dimen_5dp"
+                                android:layout_toEndOf="@+id/car_badge"
+                                android:fontFamily="@font/nunito_reg"
+                                android:gravity="center"
+                                android:text="@string/rating_reviews"
+                                android:textColor="@color/my_theme"
+                                android:textSize="@dimen/text_size_10sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/key_features_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_car_name"
+                android:layout_marginStart="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginEnd="@dimen/dimen_10dp"
+                android:fontFamily="@font/nunito_regular"
+                android:text="@string/Key_Specifications"
+                android:textColor="@color/my_theme"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:orientation="horizontal">
+
+
+                <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/tools"
+                    android:id="@+id/card_view"
+                    android:layout_width="85dp"
+                    android:layout_height="@dimen/dimen_100dp"
+                    android:layout_margin="@dimen/dimen_5dp"
+                    android:elevation="3dp"
+                    app:cardBackgroundColor="@color/background_grey"
+                    app:cardCornerRadius="@dimen/dimen_10dp"
+                    card_view:cardCornerRadius="@dimen/dimen_10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/thumbnail_feature"
+                            android:layout_width="@dimen/dimen_30dp"
+                            android:layout_height="@dimen/dimen_30dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            android:src="@drawable/ic_feature_chair"
+                            android:tint="@color/accent" />
+
+                        <TextView
+                            android:id="@+id/feature_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/thumbnail_feature"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginTop="@dimen/layout_space_small"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:fontFamily="@font/nunito_reg"
+                            android:gravity="center"
+                            android:text="@string/seats"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                        <TextView
+                            android:id="@+id/seat"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_45dp"
+                            android:layout_below="@id/feature_name"
+                            android:layout_marginLeft="@dimen/dimen_5dp"
+                            android:layout_marginRight="@dimen/dimen_5dp"
+                            android:layout_marginBottom="@dimen/dimen_2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/nunito_reg"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:textColor="@color/my_theme"
+                            android:textSize="@dimen/text_size_12sp" />
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/tools"
+                    android:id="@+id/card_view1"
+                    android:layout_width="85dp"
+                    android:layout_height="@dimen/dimen_100dp"
+                    android:layout_margin="@dimen/dimen_5dp"
+                    android:elevation="3dp"
+                    app:cardBackgroundColor="@color/background_grey"
+                    app:cardCornerRadius="@dimen/dimen_10dp"
+                    card_view:cardCornerRadius="@dimen/dimen_10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/thumbnail_feature1"
+                            android:layout_width="@dimen/dimen_30dp"
+                            android:layout_height="@dimen/dimen_30dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            android:src="@drawable/fuel"
+                            android:tint="@color/accent" />
+
+                        <TextView
+                            android:id="@+id/feature_name1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/thumbnail_feature1"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginTop="@dimen/layout_space_small"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:fontFamily="@font/nunito_reg"
+                            android:gravity="center"
+                            android:text="@string/fuel_type"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                        <TextView
+                            android:id="@+id/fuel"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_45dp"
+                            android:layout_below="@id/feature_name1"
+                            android:layout_marginLeft="@dimen/dimen_5dp"
+                            android:layout_marginRight="@dimen/dimen_5dp"
+                            android:layout_marginBottom="@dimen/dimen_2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/nunito_reg"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:textColor="@color/my_theme"
+                            android:textSize="@dimen/text_size_12sp" />
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/tools"
+                    android:id="@+id/card_view2"
+                    android:layout_width="85dp"
+                    android:layout_height="@dimen/dimen_100dp"
+                    android:layout_margin="@dimen/dimen_5dp"
+                    android:elevation="3dp"
+                    app:cardBackgroundColor="@color/background_grey"
+                    app:cardCornerRadius="@dimen/dimen_10dp"
+                    card_view:cardCornerRadius="@dimen/dimen_10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/thumbnail_feature2"
+                            android:layout_width="@dimen/dimen_30dp"
+                            android:layout_height="@dimen/dimen_30dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            android:src="@drawable/ic_noun_gear_ne"
+                            android:tint="@color/accent" />
+
+                        <TextView
+                            android:id="@+id/feature_name2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/thumbnail_feature2"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginTop="@dimen/layout_space_small"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:fontFamily="@font/nunito_reg"
+                            android:gravity="center"
+                            android:text="@string/gear_box"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                        <TextView
+                            android:id="@+id/gear"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_45dp"
+                            android:layout_below="@id/feature_name2"
+                            android:layout_marginLeft="@dimen/dimen_5dp"
+                            android:layout_marginRight="@dimen/dimen_5dp"
+                            android:layout_marginBottom="@dimen/dimen_2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/nunito_reg"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:textColor="@color/my_theme"
+                            android:textSize="@dimen/text_size_12sp" />
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/tools"
+                    android:id="@+id/card_view3"
+                    android:layout_width="85dp"
+                    android:layout_height="@dimen/dimen_100dp"
+                    android:layout_margin="@dimen/dimen_5dp"
+                    android:elevation="3dp"
+                    app:cardBackgroundColor="@color/background_grey"
+                    app:cardCornerRadius="@dimen/dimen_10dp"
+                    card_view:cardCornerRadius="@dimen/dimen_10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/thumbnail_feature3"
+                            android:layout_width="@dimen/dimen_30dp"
+                            android:layout_height="@dimen/dimen_30dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            android:src="@drawable/ic_turbo_engine"
+                            android:tint="@color/accent" />
+
+                        <TextView
+                            android:id="@+id/feature_name3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/thumbnail_feature3"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginTop="@dimen/layout_space_small"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:fontFamily="@font/nunito_reg"
+                            android:gravity="center"
+                            android:text="@string/engine"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                        <TextView
+                            android:id="@+id/engine"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_45dp"
+                            android:layout_below="@id/feature_name3"
+                            android:layout_marginLeft="@dimen/dimen_5dp"
+                            android:layout_marginRight="@dimen/dimen_5dp"
+                            android:layout_marginBottom="@dimen/dimen_2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/nunito_reg"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:textColor="@color/my_theme"
+                            android:textSize="@dimen/text_size_12sp" />
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_tuv_packages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/layout_space_10"
+                android:layout_marginEnd="@dimen/dimen_10dp"
+                android:fontFamily="@font/nunito_regular"
+                android:gravity="center"
+                android:text="@string/packages"
+                android:textColor="@color/my_theme"
+                android:textSize="@dimen/text_size_16sp" />
+
+            <TextView
+                android:id="@+id/txt_pk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:layout_marginEnd="@dimen/dimen_10dp"
+                android:fontFamily="@font/nunito_regular"
+                android:gravity="center"
+                android:text="£ 5 / hour"
+                android:textColor="@color/my_theme"
+                android:textSize="@dimen/text_size_16sp" />
+
+            <TextView
+                android:id="@+id/txt_book"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/layout_space_10"
+                android:layout_marginEnd="@dimen/dimen_10dp"
+                android:fontFamily="@font/nunito_regular"
+                android:gravity="center"
+                android:text="@string/booking_amount"
+                android:textColor="@color/my_theme"
+                android:textSize="@dimen/text_size_16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_1dp"
+                android:background="@color/accent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_pd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_10dp"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    android:layout_marginEnd="@dimen/dimen_10dp"
+                    android:layout_weight="0.3"
+                    android:fontFamily="@font/nunito_regular"
+                    android:gravity="start"
+                    android:text="@string/fare_amount_for_1_day"
+                    android:textColor="@color/my_theme"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <TextView
+                    android:id="@+id/pd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_10dp"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    android:layout_marginEnd="@dimen/dimen_10dp"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/nunito_regular"
+                    android:gravity="end"
+                    android:text="£120"
+                    android:textColor="@color/my_theme"
+                    android:textSize="@dimen/text_size_16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_pd_xx"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_10dp"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    android:layout_marginEnd="@dimen/dimen_10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nunito_bold"
+                    android:gravity="start"
+                    android:text="@string/total_fare_amount"
+                    android:textColor="@color/my_theme"
+                    android:textSize="@dimen/text_size_18sp" />
+
+                <TextView
+                    android:id="@+id/xx"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_10dp"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    android:layout_marginEnd="@dimen/dimen_10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nunito_bold"
+                    android:gravity="end"
+                    android:text="£360"
+
+                    android:textColor="@color/accent"
+                    android:textSize="@dimen/text_size_18sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/book_now"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/accent"
+        android:paddingTop="@dimen/dimen_10dp"
+        android:paddingBottom="@dimen/dimen_10dp"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/nunito_reg"
+            android:gravity="center"
+            android:padding="@dimen/dimen_5dp"
+            android:text="@string/book_now"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_15sp" />
+    </LinearLayout>
+
+</RelativeLayout>

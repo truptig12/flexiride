@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        tools:context=".presentation.view.login.LoginActivity">
+
+
+
+        <TextView
+            android:id="@+id/txt_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="center"
+            android:text="@string/sign_in"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/txt_view_country_code_l"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_country_code"
+            android:clickable="true"
+            android:drawableLeft="@drawable/ic_email"
+            android:drawableRight="@drawable/line"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/my_theme"
+            android:focusable="false"
+            android:padding="@dimen/layout_space_10"
+            android:textColor="@color/my_theme"
+            android:textColorHint="@color/my_theme"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_view" />
+
+        <EditText
+            android:id="@+id/edit_text_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/bg_phone_number"
+            android:fontFamily="@font/nunito_regular"
+            android:gravity="left"
+            android:hint="@string/email_address"
+            android:inputType="textEmailAddress|textNoSuggestions"
+            android:padding="@dimen/layout_space_10"
+            android:singleLine="true"
+            android:textColor="@color/my_theme"
+            android:textColorHint="@color/my_theme"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/txt_view_country_code_l"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_view" />
+
+        <TextView
+            android:id="@+id/text_error_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="@dimen/dimen_15dp"
+            android:gravity="right"
+            android:textColor="@color/colorErrorRed"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_text_email" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etPasswordLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_25dp"
+            android:gravity="left"
+            app:hintEnabled="false"
+            app:endIconDrawable="@drawable/password_icon"
+            app:endIconMode="password_toggle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_email"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/etPassword_l"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/edittext_background"
+                android:fontFamily="@font/nunito_regular"
+                android:hint="@string/password"
+                android:importantForAutofill="no"
+                android:inputType="textPassword|textNoSuggestions"
+                android:longClickable="false"
+                android:maxLines="1"
+                android:paddingLeft="10dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:singleLine="true"
+                android:textColor="@color/my_theme"
+                android:textColorHint="@color/my_theme"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/text_error_password_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:gravity="right"
+            android:textColor="@color/colorErrorRed"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etPasswordLayout" />
+
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_error_password_login" />
+
+        <TextView
+            android:id="@+id/txt_view_dont_hv_acc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/nunito_regular"
+            android:gravity="center"
+            android:text="@string/don_t_have_an_account"
+            android:textColor="@color/my_theme"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

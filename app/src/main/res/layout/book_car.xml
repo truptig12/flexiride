@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/all_tuv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/car_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/black_edit_theme">
+
+        <RelativeLayout
+            android:id="@+id/car_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/layout_space_10">
+
+            <TextView
+                android:id="@+id/txt_brand_name"
+                android:layout_width="@dimen/dimen_200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginBottom="@dimen/dimen_5dp"
+                android:fontFamily="@font/nunito_regular"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_15sp" />
+
+            <FrameLayout
+                android:id="@+id/veh_frame"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view"
+                    android:layout_width="@dimen/dimen_110dp"
+                    android:layout_height="@dimen/dimen_100dp"
+                    android:elevation="3dp"
+                    app:cardCornerRadius="@dimen/dimen_5dp"
+                    card_view:cardCornerRadius="@dimen/dimen_5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/car_thumbnail"
+                            android:layout_width="@dimen/dimen_110dp"
+                            android:layout_height="@dimen/dimen_100dp"
+                            android:layout_alignParentEnd="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/bookedcar" />
+
+
+                        <LinearLayout
+                            android:id="@+id/ll_booked"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/car_thumbnail"
+                            android:layout_gravity="bottom|center"
+                            android:background="@color/yellow"
+                            android:fontFamily="@font/nunito_reg"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/dimen_5dp"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:id="@+id/textView1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/nunito_regular"
+                                android:gravity="center"
+                                android:text="Booked"
+                                android:textAllCaps="true"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/black_light"
+                                android:textSize="@dimen/text_size_10sp" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+            </FrameLayout>
+
+
+            <TextView
+                android:id="@+id/txt_car_specification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_brand_name"
+                android:fontFamily="@font/nunito_regular"
+                android:text=""
+                android:textColor="@color/my_theme"
+                android:textSize="@dimen/text_size_12sp"
+                android:textStyle="normal" />
+
+            <LinearLayout
+                android:id="@+id/ll_ratings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_car_specification"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="@dimen/dimen_5dp"
+                android:layout_toLeftOf="@id/veh_frame"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/car_badge"
+                    android:layout_width="@dimen/dimen_50dp"
+                    android:layout_height="@dimen/dimen_18dp"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    android:layout_marginEnd="@dimen/layout_space_small"
+                    android:background="@drawable/button_background"
+                    android:backgroundTint="@color/black_light"
+                    android:fontFamily="@font/nunito_reg"
+                    android:orientation="horizontal"
+                    android:paddingStart="2dp"
+                    android:paddingTop="@dimen/dimen_2dp"
+                    android:paddingEnd="2dp"
+                    android:paddingBottom="@dimen/dimen_2dp"
+                    android:visibility="gone">
+
+                    <androidx.appcompat.widget.AppCompatRatingBar
+                        android:id="@+id/simpleRatingBar"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_2dp"
+                        android:layout_marginEnd="@dimen/dimen_2dp"
+                        android:backgroundTint="@color/yellow"
+                        android:isIndicator="false"
+                        android:numStars="1"
+                        android:paddingBottom="2dp"
+                        android:progressTint="@color/yellow"
+                        android:rating="1"
+                        android:scaleX="0.75"
+                        android:scaleY="0.75"
+                        android:theme="@style/RatingBar" />
+
+                    <TextView
+                        android:id="@+id/ratings_h"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/dimen_5dp"
+                        android:gravity="center"
+                        android:text="4.2"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_10sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txt_ratings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/dimen_2dp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:gravity="center"
+                    android:text="0 ratings and 0 reviews"
+                    android:textColor="@color/my_theme"
+                    android:textSize="@dimen/text_size_12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_total_trips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_ratings"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/dimen_3dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/total_trips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Total Trips"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_12sp" />
+
+                <Space
+                    android:layout_width="@dimen/dimen_2dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_total_trips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/dimen_10dp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/my_theme"
+                    android:textSize="@dimen/text_size_12sp"
+                    android:visibility="gone" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/txt_car_expense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_total_trips"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/frequency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_12sp" />
+
+                <TextView
+                    android:id="@+id/txt_fare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_3dp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:textColor="@color/my_theme"
+                    android:textSize="@dimen/text_size_12sp" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0.5dp"
+            android:layout_below="@+id/car_details"
+            android:background="@color/accent"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/ll_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:id="@+id/ll_reject"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:background="@drawable/one_side_background"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txt_view_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/nunito_regular"
+                    android:padding="@dimen/dimen_12dp"
+                    android:text="@string/reject"
+                    android:textAllCaps="true"
+                    android:textColor="@color/accent"
+                    android:textSize="@dimen/text_size_13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_accept"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:background="@drawable/gradient_green_bg_btn"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txt_end_ride"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/nunito_regular"
+                    android:gravity="center"
+                    android:padding="@dimen/dimen_12dp"
+                    android:text="@string/accept"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_13sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

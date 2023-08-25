@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".presentation.OwnerDashboard">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@android:color/white"></androidx.appcompat.widget.Toolbar>
+
+
+    <LinearLayout
+        android:id="@+id/noData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/layout_space_10"
+        android:layout_marginTop="@dimen/dimen_15dp"
+        android:layout_marginEnd="@dimen/layout_space_10"
+        android:background="@drawable/dotted_line_rectangle"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <ImageView
+            android:id="@+id/img_first_car"
+            android:layout_width="@dimen/dimen_70dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_marginTop="@dimen/layout_space_10"
+            android:scaleType="fitXY"
+            android:src="@drawable/car"
+            app:tint="@color/dark_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_first_car"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/add_your_first_tuv"
+            android:textColor="@color/dark_gray" />
+
+        <FrameLayout
+            android:id="@+id/frm_lyt_add_tuv"
+            android:layout_width="@dimen/dimen_50dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginBottom="@dimen/dimen_15dp"
+            android:background="@drawable/home_next"
+            android:backgroundTint="@color/accent">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_11dp"
+                android:layout_height="@dimen/dimen_11dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_plus"
+                app:tint="@color/black" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/layout_space_10"
+        android:layout_marginTop="@dimen/dimen_15dp"
+        android:layout_marginEnd="@dimen/layout_space_10"
+        android:background="@drawable/dotted_line_rectangle"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:itemCount="1"
+            tools:listitem="@layout/my_car" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_15dp"
+        android:fontFamily="@font/nunito_regular"
+        android:paddingTop="@dimen/dimen_10dp"
+        android:text="@string/view_bookings"
+        android:textSize="@dimen/text_size_16sp"
+        app:layout_constraintTop_toBottomOf="@id/ll" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/layout_space_10"
+        android:layout_marginTop="@dimen/dimen_15dp"
+        android:layout_marginEnd="@dimen/layout_space_10"
+        android:background="@drawable/dotted_line_rectangle"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/txt_up">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_bookings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:itemCount="1"
+            tools:listitem="@layout/book_car" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

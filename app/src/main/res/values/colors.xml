@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="my_theme">#C6C6C6</color>
+    <color name="black_light">#111111</color>
+    <color name="colorErrorRed">#FF0808</color>
+    <color name="background_grey">#424242</color>
+    <color name="edit_text_text_color">#D6D6D6</color>
+    <color name="black_theme">#303030</color>
+    <color name="edit_login_text_color">#AAAAAA</color>
+    <color name="yellow">#FFD500</color>
+    <color name="accent">#D0BCFF</color>
+    <color name="tertiary">#633B48</color>
+    <color name="dark_gray">#6c6c6c</color>
+    <color name="owner_signup">#FF8A00</color>
+    <color name="integer_number">#9C959529</color>
+
+</resources>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".presentation.AddPhotosActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/dimen_60dp"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_pickup_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dimen_20dp"
+                        android:layout_marginEnd="@dimen/dimen_20dp"
+                        android:layout_marginTop="@dimen/dimen_15dp"
+                        android:fontFamily="@font/nunito_bold"
+                        android:text="@string/add_photos_title"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_14sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginTop="@dimen/layout_space_10"
+                        android:background="@color/background_grey" />
+
+                    <LinearLayout
+                        android:id="@+id/add_photo_lay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/layout_space_10"
+                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:layout_marginEnd="@dimen/layout_space_10"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/dimen_5dp"
+                        android:paddingBottom="@dimen/dimen_5dp">
+
+                        <FrameLayout
+                            android:layout_width="@dimen/dimen_30dp"
+                            android:layout_height="@dimen/dimen_30dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/bg_orange_circle"
+                            android:backgroundTint="@color/accent">
+
+                            <ImageView
+                                android:layout_width="@dimen/dimen_18dp"
+                                android:layout_height="@dimen/dimen_18dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/camera" />
+                        </FrameLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/ll_add_new"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingTop="@dimen/dimen_5dp"
+                            android:paddingBottom="@dimen/dimen_5dp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimen_10dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/txt_add_new"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/nunito_regular"
+                                    android:text="@string/add_tuv_photos"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/accent"
+                                    android:textSize="@dimen/text_size_12sp" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txt_pickup_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="@dimen/dimen_8dp"
+                                android:fontFamily="@font/nunito_reg"
+                                android:text="@string/add_upto"
+                                android:textColor="@color/my_theme"
+                                android:textSize="@dimen/text_size_12sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:background="@color/background_grey" />
+
+                <ImageView
+                    android:id="@+id/no_data_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="150dp"
+                    android:src="@drawable/camera"
+                    android:visibility="gone"
+                    app:tint="@color/dark_gray" />
+
+                <TextView
+                    android:id="@+id/no_data_txt"
+                    android:layout_width="@dimen/dimen_250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/dimen_20dp"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="@string/you_have_no_photos_yet_click_on_add_photos_of_tuv"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/added_text"
+                    android:layout_width="@dimen/dimen_250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:layout_marginStart="@dimen/dimen_20dp"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textColor="@color/white"
+                    android:text="@string/added_tuv_photos"
+                    android:textSize="@dimen/text_size_18sp"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/add_photos_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dimen_10dp"
+                    android:visibility="visible"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2"
+                    tools:itemCount="4"
+                    tools:listitem="@layout/layout_photos" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/rl_selected_locarion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/linear_background"
+        android:padding="@dimen/dimen_8dp">
+
+        <TextView
+            android:id="@+id/txt_trip_completed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dimen_10dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:gravity="center"
+            android:text="@string/tell_more"
+            android:textAllCaps="true"
+            android:textColor="@color/accent"
+            android:textSize="@dimen/text_size_14sp" />
+
+        <Button
+            android:id="@+id/btn_next_photos"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/coupon_background_clicked"
+            android:backgroundTint="@color/accent"
+            android:fontFamily="@font/nunito_regular"
+            android:padding="@dimen/dimen_8dp"
+            android:text="@string/text_continue"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

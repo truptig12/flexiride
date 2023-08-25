@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_250dp"
+    android:background="@color/background_grey">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/car_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_250dp"
+        android:elevation="3dp"
+        app:cardBackgroundColor="@color/background_grey"
+        app:cardCornerRadius="@dimen/dimen_25dp"
+        card_view:cardCornerRadius="@dimen/dimen_25dp">
+
+        <LinearLayout
+            android:id="@+id/image_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView_slide"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

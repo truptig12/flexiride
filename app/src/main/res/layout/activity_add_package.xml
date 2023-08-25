@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.AddPackageActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/layout_space_medium"
+        android:paddingRight="@dimen/layout_space_medium"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/fare_amount"
+            android:textColor="@color/my_theme"
+            android:textSize="@dimen/text_size_12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_45dp"
+            android:layout_marginTop="@dimen/dimen_2dp"
+            android:background="@drawable/edittext_background"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:id="@+id/txt_KM"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.8"
+                android:fontFamily="@font/nunito_reg"
+                android:gravity="center"
+                android:hint="    £    "
+                android:text=""
+                android:textColor="@color/my_theme"
+                android:textColorHint="@color/edit_login_text_color"
+                android:textSize="@dimen/text_size_18sp" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="@dimen/dimen_25dp"
+                android:layout_gravity="center"
+                android:background="@color/my_theme" />
+
+            <EditText
+                android:id="@+id/et_fare"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:background="@null"
+                android:digits="@string/numbers_decimal"
+                android:fontFamily="@font/nunito_regular"
+                android:gravity="start|center"
+                android:inputType="numberDecimal"
+                android:maxLength="15"
+                android:paddingStart="@dimen/dimen_20dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/my_theme"
+                android:textSize="@dimen/text_size_14sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/error_fare_amt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textColor="@color/colorErrorRed"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/for_duration"
+            android:textColor="@color/my_theme"
+            android:textSize="@dimen/text_size_12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_45dp"
+            android:layout_marginTop="@dimen/dimen_2dp"
+            android:background="@drawable/edittext_background"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/edt_duration"
+                android:layout_width="@dimen/dimen_200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.6"
+                android:background="@null"
+                android:digits="@string/only_numbers"
+                android:fontFamily="@font/nunito_reg"
+                android:gravity="start|center"
+                android:inputType="number"
+                android:maxLength="10"
+                android:paddingStart="@dimen/dimen_20dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/my_theme"
+                android:textSize="@dimen/text_size_14sp"
+                android:visibility="visible" />
+
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="@dimen/dimen_25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/dimen_30dp"
+                android:background="@color/my_theme"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/spinner_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dimen_10dp"
+                android:paddingRight="@dimen/dimen_10dp"
+                android:text="/ Hour"
+                android:textColor="@color/white"
+
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/error_duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textColor="@color/colorErrorRed"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/rl_selected_locarion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/linear_background"
+        android:padding="@dimen/dimen_8dp">
+
+        <TextView
+            android:id="@+id/txt_trip_completed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dimen_10dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:gravity="center"
+            android:text="@string/tell_more"
+            android:textAllCaps="true"
+            android:textColor="@color/accent"
+            android:textSize="@dimen/text_size_14sp" />
+
+        <Button
+            android:id="@+id/btn_next_package"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/coupon_background_clicked"
+            android:backgroundTint="@color/accent"
+            android:fontFamily="@font/nunito_regular"
+            android:padding="@dimen/dimen_8dp"
+            android:text="@string/text_continue"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14sp" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
