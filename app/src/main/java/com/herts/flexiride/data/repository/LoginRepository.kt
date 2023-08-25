@@ -57,7 +57,7 @@ class LoginRepository {
                 val res = response.body()
                 if (response.code() == 200 && res!=null){
                     data.value = res
-                    Log.d("res", res.id.toString())
+                    Log.d("res:", res.id.toString())
                 }else{
                     data.value = null
                 }
