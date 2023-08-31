@@ -75,7 +75,7 @@ interface ApiInterface {
     fun deletePost(@Path("id") id: Int): Call<String>
 
     @Multipart
-    @POST("image/image")
+    @POST("image/image/")
     fun postImage(
         @Part image: MultipartBody.Part?,
         @Part("title") name: RequestBody?

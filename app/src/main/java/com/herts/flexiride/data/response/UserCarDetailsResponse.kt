@@ -79,4 +79,6 @@ class CarList : Serializable {
     @SerializedName("toDate")
     var toDate: String? = null
 
+    var verified: Boolean = false
+
 }

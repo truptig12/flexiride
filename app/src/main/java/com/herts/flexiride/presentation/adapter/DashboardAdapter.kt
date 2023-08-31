@@ -68,6 +68,7 @@ class DashboardAdapter(var listener: HomeListener) :
         val view_details = itemView.findViewById<LinearLayout>(R.id.view_details)
         val car_thumbnail = itemView.findViewById<ImageView>(R.id.car_thumbnail)
         val llVerify = itemView.findViewById<LinearLayout>(R.id.ll_earnings)
+        val ll_booked = itemView.findViewById<LinearLayout>(R.id.ll_booked)
         fun bindView(item: CarList?) {
 
             val decodedString: ByteArray = Base64.decode(item?.image1, Base64.DEFAULT)
@@ -78,9 +79,18 @@ class DashboardAdapter(var listener: HomeListener) :
             txt_ratings.text = "License plate no. " + item?.licencePlate
             total_trips.text = "Fare: £" + item?.fareAmount + "/hour"
             txt_fare.text =
-                "Available from: " + item?.fromDate?.trimSubstring(0,10) + " - " + item?.toDate?.trimSubstring(0,
+                "Available from: " + item?.fromDate?.trimSubstring(
+                    0,
+                    10
+                ) + " - " + item?.toDate?.trimSubstring(
+                    0,
                     10
                 )
+            if (!item?.verified!!) {
+                ll_booked.visibility = View.GONE
+            } else {
+                ll_booked.visibility = View.VISIBLE
+            }
 
         }
 

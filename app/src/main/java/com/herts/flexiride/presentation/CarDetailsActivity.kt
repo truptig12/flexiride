@@ -1,19 +1,14 @@
 package com.herts.flexiride.presentation
 
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -31,8 +26,6 @@ import com.herts.flexiride.presentation.adapter.ImagesAdapter
 import com.herts.flexiride.presentation.adapter.ViewPagesImages
 import com.herts.flexiride.utils.Navigator
 import com.herts.flexiride.viewmodel.BookingViewModel
-import com.herts.flexiride.viewmodel.CarViewModel
-import com.herts.flexiride.viewmodel.HomeViewModel
 
 class CarDetailsActivity : AppCompatActivity(), ImagesAdapter.onItemClick {
     private lateinit var vm: BookingViewModel
@@ -43,12 +36,15 @@ class CarDetailsActivity : AppCompatActivity(), ImagesAdapter.onItemClick {
     var viewpager: ViewPager? = null
     var image: ImageView? = null
     var bookingAmount: Float = 0F
+    var noOfDays: Int = 1
 
     companion object {
         var CAR_DETAILS: String = "CAR_DETAILS"
-        fun getCallingIntent(context: Context, car: CarList): Intent {
+        var NO_OF_DAYS: String = "NO_OF_DAYS"
+        fun getCallingIntent(context: Context, car: CarList, leftDays: String): Intent {
             val intent = Intent(context, CarDetailsActivity::class.java)
             intent.putExtra(CAR_DETAILS, car)
+            intent.putExtra(NO_OF_DAYS, leftDays)
             return intent
         }
     }
@@ -61,8 +57,10 @@ class CarDetailsActivity : AppCompatActivity(), ImagesAdapter.onItemClick {
         if (bundle != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 dta = intent.getSerializableExtra(CAR_DETAILS, CarList::class.java)
+                noOfDays = intent.getStringExtra(NO_OF_DAYS)!!?.toInt()!!
             } else {
                 dta = intent.getSerializableExtra(CAR_DETAILS) as CarList
+                noOfDays = intent.getStringExtra(NO_OF_DAYS)!!?.toInt()!!
             }
         }
         image = findViewById<ImageView>(R.id.image)
@@ -92,7 +90,7 @@ class CarDetailsActivity : AppCompatActivity(), ImagesAdapter.onItemClick {
 
         vm.createPostLiveData?.observe(this, Observer {
             if (it.id != null) {
-                Navigator.navigateToHomeActivity(this)
+                Navigator.navigateToBookingSuccess(this, it.id!!)
             } else {
                 showToast("Cannot add car at the moment")
             }
@@ -150,12 +148,12 @@ class CarDetailsActivity : AppCompatActivity(), ImagesAdapter.onItemClick {
 
         val pd = findViewById<TextView>(R.id.pd)
         val amt = dta?.fareAmount?.toFloat()?.times(24)
-        pd.setText(amt.toString())
+        pd.setText("£ " + amt.toString())
 
         //calculation for days
         val xx = findViewById<TextView>(R.id.xx)
-        val tt = dta?.fareAmount?.toFloat()?.times(24)
-        xx.setText(tt.toString())
+        val tt = amt?.times(noOfDays)
+        xx.setText("£ " + tt.toString())
         bookingAmount = tt!!
 
         imageSliderImplementation()

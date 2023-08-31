@@ -3,27 +3,29 @@ package com.herts.flexiride.presentation
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.herts.flexiride.R
 import com.herts.flexiride.data.response.CarList
-import com.herts.flexiride.data.response.SignInResponse
 import com.herts.flexiride.presentation.adapter.HomeAdapter
 import com.herts.flexiride.utils.Navigator
 import com.herts.flexiride.viewmodel.HomeViewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
+import java.util.concurrent.TimeUnit
 
 class HomeActivity : AppCompatActivity(), HomeAdapter.HomeListener {
 
@@ -35,6 +37,7 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.HomeListener {
     var txt_end_date: TextView? = null
     var spinner_city: Spinner? = null
     var cal = Calendar.getInstance()
+    var leftDays:String = "1"
 
     companion object {
         fun getCallingIntent(context: Context): Intent {
@@ -50,6 +53,10 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.HomeListener {
         val img_view_find_cars = findViewById<ImageView>(R.id.img_view_find_cars)
         img_view_find_cars.setOnClickListener {
             if (isCredentialsValid()) {
+                val millionSeconds = toDate?.time?.minus(fromDate?.time!!)
+                leftDays = TimeUnit.MILLISECONDS.toDays(millionSeconds!!).toString()
+                Log.d("left Days: ", leftDays)
+
                 callApi()
             } else {
                 showToast("Enter correct details!")
@@ -70,7 +77,10 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.HomeListener {
         vm.postModelListLiveData?.observe(this, Observer {
             if (it != null) {
                 rv_home?.visibility = View.VISIBLE
-                adapter.setData(it.carList as ArrayList<CarList>)
+                if (it.carList != null)
+                    adapter.setData(it.carList as ArrayList<CarList>)
+                else
+                    showToast("No Cars found")
             } else {
                 showToast("Something went wrong")
             }
@@ -138,16 +148,21 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.HomeListener {
         }
     }
 
+    var fromDate: Date? = null
+    var toDate: Date? = null
+
     private fun updateDateInView() {
         val myFormat = "yyyy-MM-dd" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         txt_view_date!!.text = sdf.format(cal.getTime())
+        fromDate = cal.time
     }
 
     private fun updateDateInView1() {
         val myFormat = "yyyy-MM-dd" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         txt_end_date!!.text = sdf.format(cal.getTime())
+        toDate = cal.time
     }
 
     private fun initAdapter() {
@@ -158,7 +173,7 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.HomeListener {
     }
 
     override fun onItemView(postModel: CarList, position: Int) {
-        Navigator.navigateToCarDetailsActivity(this, postModel)
+        Navigator.navigateToCarDetailsActivity(this, postModel, leftDays)
 
     }
 

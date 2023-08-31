@@ -2,11 +2,11 @@ package com.herts.flexiride.utils
 
 import android.content.Context
 import com.herts.flexiride.data.response.CarList
-import com.herts.flexiride.data.response.SignInResponse
 import com.herts.flexiride.presentation.AddAvailabilityActivity
 import com.herts.flexiride.presentation.AddNewCarActivity
 import com.herts.flexiride.presentation.AddPackageActivity
 import com.herts.flexiride.presentation.AddPhotosActivity
+import com.herts.flexiride.presentation.BookingSuccess
 import com.herts.flexiride.presentation.CarDetailsActivity
 import com.herts.flexiride.presentation.RegisterActivity
 import com.herts.flexiride.presentation.HomeActivity
@@ -57,7 +57,11 @@ object Navigator {
         context.startActivity(AddAvailabilityActivity.getCallingIntent(context, id, city))
     }
 
-    fun navigateToCarDetailsActivity(context: Context, car: CarList) {
-        context.startActivity(CarDetailsActivity.getCallingIntent(context, car))
+    fun navigateToCarDetailsActivity(context: Context, car: CarList, leftDays: String) {
+        context.startActivity(CarDetailsActivity.getCallingIntent(context, car, leftDays))
+    }
+
+    fun navigateToBookingSuccess(context: Context, id: Int) {
+        context.startActivity(BookingSuccess.getCallingIntent(context, id))
     }
 }

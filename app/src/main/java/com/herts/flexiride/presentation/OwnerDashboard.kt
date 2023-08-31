@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -48,6 +49,7 @@ class OwnerDashboard : AppCompatActivity(), DashboardAdapter.HomeListener,
     var rv_dashboard: RecyclerView? = null
     var rv_bookings: RecyclerView? = null
     var userID: Int = 0
+    var txt_up: TextView? = null
 //    var dta: SignInResponse? = null
 
     companion object {
@@ -80,16 +82,25 @@ class OwnerDashboard : AppCompatActivity(), DashboardAdapter.HomeListener,
          }*/
 
         initAdapter()
+        txt_up = findViewById(R.id.txt_up)
         val sharedPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE) ?: return
         userID = sharedPref.getInt("USER_ID", 1)
         val noData = findViewById<LinearLayout>(R.id.noData)
         vm.fetchAllCars(userID)
         vm.postModelListLiveData?.observe(this, Observer {
             if (it != null) {
-                noData.visibility = View.GONE
-                rv_dashboard?.visibility = View.VISIBLE
-                adapter.setData(it.carList as ArrayList<CarList>)
-                callBookingsApi()
+                if (it.carList != null) {
+                    noData.visibility = View.GONE
+                    rv_dashboard?.visibility = View.VISIBLE
+                    txt_up?.visibility = View.VISIBLE
+                    adapter.setData(it.carList as ArrayList<CarList>)
+                    callBookingsApi()
+                } else {
+                    noData.visibility = View.VISIBLE
+                    rv_dashboard?.visibility = View.GONE
+                    txt_up?.visibility = View.GONE
+                }
+
             } else {
                 noData.visibility = View.VISIBLE
                 rv_dashboard?.visibility = View.GONE
@@ -101,6 +112,7 @@ class OwnerDashboard : AppCompatActivity(), DashboardAdapter.HomeListener,
         frm_lyt_add_tuv.setOnClickListener {
             Navigator.navigateToAddNewCarActivity(this)
         }
+
     }
 
     private fun callBookingsApi() {
@@ -108,7 +120,10 @@ class OwnerDashboard : AppCompatActivity(), DashboardAdapter.HomeListener,
         vm.postBookingListLiveData?.observe(this, Observer {
             if (it != null) {
                 rv_bookings?.visibility = View.VISIBLE
-                bookingAdapter.setData(it.bookingList as ArrayList<BookingList>)
+                if (it.bookingList != null)
+                    bookingAdapter.setData(it.bookingList as ArrayList<BookingList>)
+                else
+                    rv_bookings?.visibility = View.GONE
             } else {
                 rv_bookings?.visibility = View.GONE
             }
@@ -146,6 +161,8 @@ class OwnerDashboard : AppCompatActivity(), DashboardAdapter.HomeListener,
                 response: Response<ResponseBody?>?
             ) {
                 // Do Something
+                postModel.verified = true
+                adapter.notifyItemChanged(position)
                 Log.d("Test", response!!.body()!!.string())
                 Toast.makeText(this@OwnerDashboard, response.toString(), Toast.LENGTH_LONG).show()
             }

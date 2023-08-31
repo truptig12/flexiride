@@ -22,7 +22,7 @@
     <string name="enter_valid_email_add">Please enter valid email address</string>
 
 
-<!--    //home activity-->
+    <!--    //home activity-->
     <string name="pick_up">Pick up</string>
     <string name="drop_off">Drop off</string>
     <string name="from">From</string>
@@ -39,7 +39,7 @@
     <string name="i_m_an_owner">I\'m an Owner!</string>
     <string name="i_m_a_renter">I\'m a Renter!</string>
 
-<!--    //dashboard-->
+    <!--    //dashboard-->
     <string name="add_your_first_tuv">Add your first Car</string>
     <string name="view_details">View Details</string>
     <string name="accept">accept</string>
@@ -206,4 +206,15 @@
     <string name="total_fare_amount">Total fare amount</string>
     <string name="view_bookings">View Bookings</string>
     <string name="verify_your_data_to_get_started">Verify Your Data to get started</string>
+    <string name="from_date">From Date</string>
+    <string name="to_date">To Date</string>
+    <string name="select_date">Select Date</string>
+
+
+    <!-- booking confirmed-->
+    <string name="booking_confirmed">Booking Confirmed</string>
+    <string name="your_booking_id_is">Your booking ID is</string>
+    <string name="have_a_wonderful_ride">Have a wonderful ride.</string>
+    <string name="Note_your_booking">Note your booking ID for future reference</string>
+
 </resources>
