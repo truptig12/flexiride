@@ -48,10 +48,10 @@ class DashboardRepository {
 
     }
 
-    fun fetchAllCars(i: Int): LiveData<UserCarDetailsResponse> {
+    fun fetchAllCars(token:String,i: Int): LiveData<UserCarDetailsResponse> {
         val data = MutableLiveData<UserCarDetailsResponse>()
 
-        apiInterface?.fetchAllCars(i)?.enqueue(object : Callback<UserCarDetailsResponse> {
+        apiInterface?.fetchAllCars(token,i)?.enqueue(object : Callback<UserCarDetailsResponse> {
 
             override fun onFailure(call: Call<UserCarDetailsResponse>, t: Throwable) {
                 data.value = null
@@ -76,10 +76,10 @@ class DashboardRepository {
 
     }
 
-    fun fetchAllBookings(i: Int): LiveData<BookingDetailsResponse> {
+    fun fetchAllBookings(token:String,i: Int): LiveData<BookingDetailsResponse> {
         val data = MutableLiveData<BookingDetailsResponse>()
 
-        apiInterface?.fetchAllBookings(i)?.enqueue(object : Callback<BookingDetailsResponse> {
+        apiInterface?.fetchAllBookings(token,i)?.enqueue(object : Callback<BookingDetailsResponse> {
 
             override fun onFailure(call: Call<BookingDetailsResponse>, t: Throwable) {
                 data.value = null
@@ -104,10 +104,10 @@ class DashboardRepository {
 
     }
 
-    fun acceptBooking(i: Int): LiveData<SignupResponse> {
+    fun acceptBooking(token:String,i: Int): LiveData<SignupResponse> {
         val data = MutableLiveData<SignupResponse>()
 
-        apiInterface?.acceptBooking(i)?.enqueue(object : Callback<SignupResponse> {
+        apiInterface?.acceptBooking(token,i)?.enqueue(object : Callback<SignupResponse> {
 
             override fun onFailure(call: Call<SignupResponse>, t: Throwable) {
                 data.value = null
@@ -132,10 +132,10 @@ class DashboardRepository {
 
     }
 
-    fun rejectBooking(i: Int): LiveData<SignupResponse> {
+    fun rejectBooking(token:String,i: Int): LiveData<SignupResponse> {
         val data = MutableLiveData<SignupResponse>()
 
-        apiInterface?.rejectBooking(i)?.enqueue(object : Callback<SignupResponse> {
+        apiInterface?.rejectBooking(token,i)?.enqueue(object : Callback<SignupResponse> {
 
             override fun onFailure(call: Call<SignupResponse>, t: Throwable) {
                 data.value = null

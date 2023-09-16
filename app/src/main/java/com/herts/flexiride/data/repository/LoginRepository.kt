@@ -14,51 +14,53 @@ import retrofit2.Response
 
 class LoginRepository {
 
-    private var apiInterface: ApiInterface?=null
+    private var apiInterface: ApiInterface? = null
 
     init {
         apiInterface = ApiClient.getApiClient().create(ApiInterface::class.java)
     }
 
 
+    /* fun loginUser(signInRequest: SignInRequest):LiveData<SignupResponse>{
+         val data = MutableLiveData<SignupResponse>()
 
-   /* fun loginUser(signInRequest: SignInRequest):LiveData<SignupResponse>{
-        val data = MutableLiveData<SignupResponse>()
+         apiInterface?.doSignIn(signInRequest)?.enqueue(object : Callback<SignupResponse>{
+             override fun onFailure(call: Call<SignupResponse>, t: Throwable) {
+                 data.value = null
+             }
 
-        apiInterface?.doSignIn(signInRequest)?.enqueue(object : Callback<SignupResponse>{
-            override fun onFailure(call: Call<SignupResponse>, t: Throwable) {
-                data.value = null
-            }
+             override fun onResponse(call: Call<SignupResponse>, response: Response<SignupResponse>) {
+                 val res = response.body()
+                 if (response.code() == 201 && res!=null){
+                     data.value = res
+                     Log.d("res", res.id.toString())
+                 }else{
+                     data.value = null
+                 }
+             }
+         })
 
-            override fun onResponse(call: Call<SignupResponse>, response: Response<SignupResponse>) {
-                val res = response.body()
-                if (response.code() == 201 && res!=null){
-                    data.value = res
-                    Log.d("res", res.id.toString())
-                }else{
-                    data.value = null
-                }
-            }
-        })
+         return data
 
-        return data
+     }*/
 
-    }*/
-
-    fun loginUser(email:String):LiveData<SignInResponse>{
+    fun loginUser(signInRequest: SignInRequest): LiveData<SignInResponse> {
         val data = MutableLiveData<SignInResponse>()
 
-        apiInterface?.login(email)?.enqueue(object : Callback<SignInResponse>{
+        apiInterface?.login(signInRequest)?.enqueue(object : Callback<SignInResponse> {
             override fun onFailure(call: Call<SignInResponse>, t: Throwable) {
                 data.value = null
             }
 
-            override fun onResponse(call: Call<SignInResponse>, response: Response<SignInResponse>) {
+            override fun onResponse(
+                call: Call<SignInResponse>,
+                response: Response<SignInResponse>
+            ) {
                 val res = response.body()
-                if (response.code() == 200 && res!=null){
+                if (response.code() == 200 && res != null) {
                     data.value = res
-                    Log.d("res:", res.id.toString())
-                }else{
+                    Log.d("res:", res.token.toString())
+                } else {
                     data.value = null
                 }
             }

@@ -26,8 +26,8 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
 //        createPostLiveData = homeRepository?.loginUser(signInRequest)
 //    }
 
-    fun loginUser(email: String) {
-        createPostLiveData = homeRepository?.loginUser(email)
+    fun loginUser(signInRequest: SignInRequest) {
+        createPostLiveData = homeRepository?.loginUser(signInRequest)
     }
 
     fun isPasswordValid(password: String): Boolean {

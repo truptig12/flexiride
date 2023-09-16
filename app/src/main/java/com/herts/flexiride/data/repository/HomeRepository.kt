@@ -22,13 +22,14 @@ class HomeRepository {
 
 
     fun fetchAllCars(
+        token:String,
         city: String,
         startDate: String,
         endDate: String
     ): LiveData<UserCarDetailsResponse> {
         val data = MutableLiveData<UserCarDetailsResponse>()
 
-        apiInterface?.fetchAllCarsForUsers(city, startDate, endDate)
+        apiInterface?.fetchAllCarsForUsers(token,city, startDate, endDate)
             ?.enqueue(object : Callback<UserCarDetailsResponse> {
 
                 override fun onFailure(call: Call<UserCarDetailsResponse>, t: Throwable) {

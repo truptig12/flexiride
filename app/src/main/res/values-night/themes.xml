@@ -4,6 +4,7 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
         <item name="android:statusBarColor">#b39ddb</item>
+        <item name="snackbarStyle">@style/MySnackBarStyle</item>
     </style>
 
     <style name="spinnerNewTheme">
@@ -12,5 +13,9 @@
         <item name="android:textSize">14sp</item>
         <item name="background">@color/background_grey</item>
         <item name="android:colorAccent">@color/white</item>
+    </style>
+
+    <style name="MySnackBarStyle" parent="Widget.MaterialComponents.Snackbar">
+        <item name="android:background">@color/background_grey</item>
     </style>
 </resources>

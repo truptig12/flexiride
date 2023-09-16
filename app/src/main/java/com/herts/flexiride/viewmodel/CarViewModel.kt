@@ -27,19 +27,20 @@ class CarViewModel(application: Application) : AndroidViewModel(application) {
         createPhotosLiveData = MutableLiveData()
     }
 
-    fun addCar(addCarRequest: AddCarRequest) {
-        createPostLiveData = carRepository?.addCar(addCarRequest)
+    fun addCar(token: String, addCarRequest: AddCarRequest) {
+        createPostLiveData = carRepository?.addCar(token, addCarRequest)
     }
 
-    fun addPackage(addPackageRequest: AddPackageRequest) {
-        createPostLiveData = carRepository?.addPackage(addPackageRequest)
+    fun addPackage(token: String,addPackageRequest: AddPackageRequest) {
+        createPostLiveData = carRepository?.addPackage(token,addPackageRequest)
     }
 
-    fun addAvailability(addAvailabilityRequest: AddAvailabilityRequest) {
-        createAvailabilityLiveData = carRepository?.addAvailability(addAvailabilityRequest)
+    fun addAvailability(token:String, addAvailabilityRequest: AddAvailabilityRequest) {
+        createAvailabilityLiveData = carRepository?.addAvailability(token,addAvailabilityRequest)
     }
 
     fun addCarPhotos(
+        token:String,
         i: Int,
         body1: MultipartBody.Part,
         body2: MultipartBody.Part,
@@ -47,7 +48,7 @@ class CarViewModel(application: Application) : AndroidViewModel(application) {
         body4: MultipartBody.Part
 
     ) {
-        createPhotosLiveData = carRepository?.addCarPhotos(i, body1,body2,body3,body4)
+        createPhotosLiveData = carRepository?.addCarPhotos(token,i, body1, body2, body3, body4)
     }
 
 }

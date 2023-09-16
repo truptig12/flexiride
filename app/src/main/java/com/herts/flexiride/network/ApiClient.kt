@@ -7,8 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 
-const val BASEURL = "http://192.168.0.15:9090/"
-const val BASEURL1 = "http://192.168.0.15:8000/"
+const val BASEURL = "http://192.168.0.53:9090/"
+const val BASEURL1 = "http://192.168.0.53:8000/"
 class ApiClient {
 
 

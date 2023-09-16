@@ -79,6 +79,7 @@ class CarDetailsActivity : AppCompatActivity(), ImagesAdapter.onItemClick {
     private fun callApi() {
         val sharedPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE) ?: return
         val userID = sharedPref.getInt("USER_ID", 1)
+        val token = sharedPref.getString("TOKEN", "")
         val addBookingRequest = AddBookingRequest()
         addBookingRequest.userId = dta?.userId!!
         addBookingRequest.bookedUserId = userID
@@ -86,7 +87,7 @@ class CarDetailsActivity : AppCompatActivity(), ImagesAdapter.onItemClick {
         addBookingRequest.fromDate = dta?.fromDate!!
         addBookingRequest.toDate = dta?.toDate!!
         addBookingRequest.bookingAmount = bookingAmount.toInt()
-        vm.addBooking(addBookingRequest)
+        vm.addBooking(token.toString(), addBookingRequest)
 
         vm.createPostLiveData?.observe(this, Observer {
             if (it.id != null) {

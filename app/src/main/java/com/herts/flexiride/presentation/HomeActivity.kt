@@ -37,7 +37,7 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.HomeListener {
     var txt_end_date: TextView? = null
     var spinner_city: Spinner? = null
     var cal = Calendar.getInstance()
-    var leftDays:String = "1"
+    var leftDays: String = "1"
 
     companion object {
         fun getCallingIntent(context: Context): Intent {
@@ -69,7 +69,10 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.HomeListener {
     }
 
     private fun callApi() {
+        val sharedPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE) ?: return
+        val token = sharedPref.getString("TOKEN", "")
         vm.fetchAllCars(
+            token.toString(),
             spinner_city?.selectedItem.toString(),
             txt_view_date?.text.toString(),
             txt_end_date?.text.toString()

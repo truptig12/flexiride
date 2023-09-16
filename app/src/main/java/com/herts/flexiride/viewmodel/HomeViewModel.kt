@@ -22,8 +22,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-    fun fetchAllCars(city: String, startDate: String, endDate: String) {
-        postModelListLiveData = homeRepository?.fetchAllCars(city, startDate, endDate)
+    fun fetchAllCars(token:String,city: String, startDate: String, endDate: String) {
+        postModelListLiveData = homeRepository?.fetchAllCars(token,city, startDate, endDate)
     }
 
 }

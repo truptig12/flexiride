@@ -14,10 +14,11 @@ import com.herts.flexiride.data.response.CarList
 import okhttp3.internal.trimSubstring
 
 
-class DashboardAdapter(var listener: HomeListener) :
+class DashboardAdapter(var listener: HomeListener, var verify: Int) :
     RecyclerView.Adapter<DashboardAdapter.HomeViewHolder>() {
 
     private var data: ArrayList<CarList>? = null
+
 
     interface HomeListener {
         fun onItemDeleted(postModel: CarList, position: Int)
@@ -26,6 +27,7 @@ class DashboardAdapter(var listener: HomeListener) :
     fun setData(list: ArrayList<CarList>) {
         data = list
         notifyDataSetChanged()
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
@@ -46,6 +48,12 @@ class DashboardAdapter(var listener: HomeListener) :
                 listener.onItemDeleted(it1, position)
             }
         }
+//        if (verify == 1) {
+//            holder.llVerify.visibility = View.GONE
+//        } else {
+//            holder.llVerify.visibility = View.VISIBLE
+//        }
+
     }
 
     fun addData(postModel: CarList) {
@@ -69,7 +77,11 @@ class DashboardAdapter(var listener: HomeListener) :
         val car_thumbnail = itemView.findViewById<ImageView>(R.id.car_thumbnail)
         val llVerify = itemView.findViewById<LinearLayout>(R.id.ll_earnings)
         val ll_booked = itemView.findViewById<LinearLayout>(R.id.ll_booked)
+        val textView1 = itemView.findViewById<TextView>(R.id.textView1)
+
+
         fun bindView(item: CarList?) {
+
 
             val decodedString: ByteArray = Base64.decode(item?.image1, Base64.DEFAULT)
             val decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
@@ -86,10 +98,57 @@ class DashboardAdapter(var listener: HomeListener) :
                     0,
                     10
                 )
-            if (!item?.verified!!) {
-                ll_booked.visibility = View.GONE
-            } else {
+
+            if (item?.verified?.isNotEmpty()!!) {
                 ll_booked.visibility = View.VISIBLE
+                if (item?.verified == "No") {
+                    textView1.setText("No Damages")
+                } else {
+                    textView1.setText("Damage Detected")
+                }
+            } else {
+                ll_booked.visibility = View.GONE
+            }
+
+            if (item?.brandVerified?.isNotEmpty()!!) {
+                if (item?.brandVerified == "Yes") {
+                    llVerify.visibility = View.GONE
+                    txt_brand_name.setCompoundDrawablesWithIntrinsicBounds(
+                        0,
+                        0,
+                        R.drawable.baseline_check_24,
+                        0
+                    )
+                } else {
+                    txt_brand_name.setCompoundDrawablesWithIntrinsicBounds(
+                        0,
+                        0,
+                        R.drawable.baseline_close_24,
+                        0
+                    )
+                }
+            } else {
+                txt_brand_name.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+            }
+
+            if (item?.yearVerified?.isNotEmpty()!!) {
+                if (item?.yearVerified == "Yes") {
+                    txt_car_specification.setCompoundDrawablesWithIntrinsicBounds(
+                        0,
+                        0,
+                        R.drawable.baseline_check_24,
+                        0
+                    )
+                } else {
+                    txt_car_specification.setCompoundDrawablesWithIntrinsicBounds(
+                        0,
+                        0,
+                        R.drawable.baseline_close_24,
+                        0
+                    )
+                }
+            } else {
+                txt_car_specification.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
             }
 
         }

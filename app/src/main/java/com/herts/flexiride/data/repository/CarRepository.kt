@@ -23,10 +23,10 @@ class CarRepository {
     }
 
 
-    fun addCar(addCarRequest: AddCarRequest): LiveData<AddCarResponse> {
+    fun addCar(token: String,addCarRequest: AddCarRequest): LiveData<AddCarResponse> {
         val data = MutableLiveData<AddCarResponse>()
 
-        apiInterface?.addCar(addCarRequest)?.enqueue(object : Callback<AddCarResponse> {
+        apiInterface?.addCar(token,addCarRequest)?.enqueue(object : Callback<AddCarResponse> {
             override fun onFailure(call: Call<AddCarResponse>, t: Throwable) {
                 data.value = null
             }
@@ -49,10 +49,10 @@ class CarRepository {
 
     }
 
-    fun addPackage(addPackageRequest: AddPackageRequest): LiveData<AddCarResponse> {
+    fun addPackage(token: String,addPackageRequest: AddPackageRequest): LiveData<AddCarResponse> {
         val data = MutableLiveData<AddCarResponse>()
 
-        apiInterface?.addPackage(addPackageRequest)
+        apiInterface?.addPackage(token,addPackageRequest)
             ?.enqueue(object : Callback<AddCarResponse> {
                 override fun onFailure(call: Call<AddCarResponse>, t: Throwable) {
                     data.value = null
@@ -76,10 +76,10 @@ class CarRepository {
 
     }
 
-    fun addAvailability(addAvailabilityRequest: AddAvailabilityRequest): LiveData<AddCarResponse> {
+    fun addAvailability(token:String, addAvailabilityRequest: AddAvailabilityRequest): LiveData<AddCarResponse> {
         val data = MutableLiveData<AddCarResponse>()
 
-        apiInterface?.addAvailability(addAvailabilityRequest)
+        apiInterface?.addAvailability(token,addAvailabilityRequest)
             ?.enqueue(object : Callback<AddCarResponse> {
                 override fun onFailure(call: Call<AddCarResponse>, t: Throwable) {
                     data.value = null
@@ -104,6 +104,7 @@ class CarRepository {
     }
 
     fun addCarPhotos(
+        token:String,
         i: Int,
         body1: MultipartBody.Part,
         body2: MultipartBody.Part,
@@ -112,7 +113,7 @@ class CarRepository {
     ): LiveData<AddCarResponse> {
         val data = MutableLiveData<AddCarResponse>()
 
-        apiInterface?.addCarPhotos(i, body1, body2, body3, body4)
+        apiInterface?.addCarPhotos(token,i, body1, body2, body3, body4)
             ?.enqueue(object : Callback<AddCarResponse> {
                 override fun onFailure(call: Call<AddCarResponse>, t: Throwable) {
                     data.value = null

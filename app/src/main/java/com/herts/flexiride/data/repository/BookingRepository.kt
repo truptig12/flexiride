@@ -25,10 +25,10 @@ class BookingRepository {
     }
 
 
-    fun addBooking(addBookingRequest: AddBookingRequest): LiveData<SignupResponse> {
+    fun addBooking( token:String,addBookingRequest: AddBookingRequest): LiveData<SignupResponse> {
         val data = MutableLiveData<SignupResponse>()
 
-        apiInterface?.addBooking(addBookingRequest)?.enqueue(object : Callback<SignupResponse> {
+        apiInterface?.addBooking(token,addBookingRequest)?.enqueue(object : Callback<SignupResponse> {
             override fun onFailure(call: Call<SignupResponse>, t: Throwable) {
                 data.value = null
             }
@@ -51,10 +51,10 @@ class BookingRepository {
 
     }
 
-    fun addPackage(addPackageRequest: AddPackageRequest): LiveData<AddCarResponse> {
+    fun addPackage(token: String,addPackageRequest: AddPackageRequest): LiveData<AddCarResponse> {
         val data = MutableLiveData<AddCarResponse>()
 
-        apiInterface?.addPackage(addPackageRequest)
+        apiInterface?.addPackage(token,addPackageRequest)
             ?.enqueue(object : Callback<AddCarResponse> {
                 override fun onFailure(call: Call<AddCarResponse>, t: Throwable) {
                     data.value = null
@@ -78,7 +78,7 @@ class BookingRepository {
 
     }
 
-    fun addAvailability(addAvailabilityRequest: AddAvailabilityRequest): LiveData<AddCarResponse> {
+   /* fun addAvailability(addAvailabilityRequest: AddAvailabilityRequest): LiveData<AddCarResponse> {
         val data = MutableLiveData<AddCarResponse>()
 
         apiInterface?.addAvailability(addAvailabilityRequest)
@@ -103,9 +103,9 @@ class BookingRepository {
 
         return data
 
-    }
+    }*/
 
-    fun addCarPhotos(
+   /* fun addCarPhotos(
         i: Int,
         body1: MultipartBody.Part,
         body2: MultipartBody.Part,
@@ -136,7 +136,7 @@ class BookingRepository {
 
         return data
 
-    }
+    }*/
 
 
 }

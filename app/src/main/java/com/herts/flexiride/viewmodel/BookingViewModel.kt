@@ -30,12 +30,12 @@ class BookingViewModel(application: Application) : AndroidViewModel(application)
         createPhotosLiveData = MutableLiveData()
     }
 
-    fun addBooking(addBookingRequest: AddBookingRequest) {
-        createPostLiveData = carRepository?.addBooking(addBookingRequest)
+    fun addBooking( token:String,addBookingRequest: AddBookingRequest) {
+        createPostLiveData = carRepository?.addBooking(token,addBookingRequest)
     }
 
 
-    fun addAvailability(addAvailabilityRequest: AddAvailabilityRequest) {
+   /* fun addAvailability(addAvailabilityRequest: AddAvailabilityRequest) {
         createAvailabilityLiveData = carRepository?.addAvailability(addAvailabilityRequest)
     }
 
@@ -48,6 +48,6 @@ class BookingViewModel(application: Application) : AndroidViewModel(application)
 
     ) {
         createPhotosLiveData = carRepository?.addCarPhotos(i, body1,body2,body3,body4)
-    }
+    }*/
 
 }

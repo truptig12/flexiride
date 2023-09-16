@@ -151,7 +151,9 @@ class AddPhotosActivity : AppCompatActivity() {
         body3: MultipartBody.Part,
         body4: MultipartBody.Part
     ) {
-        vm.addCarPhotos(carId, body1, body2, body3, body4)
+        val sharedPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE) ?: return
+        val token = sharedPref.getString("TOKEN", "")
+        vm.addCarPhotos(token.toString(), carId, body1, body2, body3, body4)
         vm.createPhotosLiveData?.observe(this, Observer {
             if (it.id != null) {
                 Navigator.navigateToAddAvailabilityActivity(this, carId, city)

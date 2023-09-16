@@ -54,34 +54,39 @@ class LoginActivity : AppCompatActivity() {
 
         val mSignInRequest = SignInRequest()
         mSignInRequest.password = etPassword?.text.toString()
-        mSignInRequest.email = email_address?.text.toString()
+        mSignInRequest.username = email_address?.text.toString()
 
 
-//        vm.loginUser(mSignInRequest)
-        vm.loginUser(email_address?.text.toString())
+        vm.loginUser(mSignInRequest)
+//        vm.loginUser(email_address?.text.toString())
 
         vm.createPostLiveData?.observe(this, Observer {
             if (it != null) {
-
-                if (it.password.toString() == etPassword?.text.toString()) {
-                    val sharedPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE)
+                if (it.user != null) {
+                    val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
                     with(sharedPref.edit()) {
-                        putInt("USER_ID", it.userId?.toInt()!!)
+                        putInt("USER_ID", it.user?.userId?.toInt()!!)
                         apply()
                     }
-                    if (it.roleId == 1)
+                    val token = it.token
+                    if (token != null) {
+                        val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
+                        with(sharedPref.edit()) {
+                            putString("TOKEN", "Bearer " + it?.token)
+                            apply()
+                        }
+
+                    }
+                    if (it?.user?.roleId == 1)
                         Navigator.navigateToOwnerDashboardActivity(this)
-//                        Navigator.navigateToAddAvailabilityActivity(this, 2, "London")
                     else
                         Navigator.navigateToHomeActivity(this)
                     showToast("Login successful!")
                 } else {
                     showToast("Incorrect password!")
                 }
-
-
             } else {
-                showToast("Cannot create post at the moment")
+                showToast("Something went wrong! Try again later!")
             }
 
         })

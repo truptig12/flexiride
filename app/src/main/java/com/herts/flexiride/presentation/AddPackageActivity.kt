@@ -52,7 +52,7 @@ class AddPackageActivity : AppCompatActivity() {
         addPackageRequest.duration = edt_duration?.text.toString()
         addPackageRequest.fareAmount = et_fare?.text.toString().toLong()
 
-        vm.addPackage(addPackageRequest)
+       // vm.addPackage(addPackageRequest)
 
         vm.createPackageLiveData?.observe(this, Observer {
             if (it.id != null) {

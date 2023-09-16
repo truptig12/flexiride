@@ -4,6 +4,17 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 class SignInResponse : Serializable {
+
+    @SerializedName("token")
+    var token: String? = null
+
+    @SerializedName("user")
+    var user: UserL? = null
+
+}
+
+class UserL : Serializable {
+
     @SerializedName("responseCode")
     var responseCode: Int? = null
 

@@ -4,6 +4,6 @@ import java.io.Serializable
 
 class SignInRequest : Serializable {
 
-    var email: String = ""
+    var username: String = ""
     var password: String = ""
 }

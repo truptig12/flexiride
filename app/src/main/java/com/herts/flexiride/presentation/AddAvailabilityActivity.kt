@@ -157,7 +157,7 @@ class AddAvailabilityActivity : AppCompatActivity() {
     private fun callApi() {
         val sharedPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE) ?: return
         val userID = sharedPref.getInt("USER_ID", 1)
-
+        val token = sharedPref.getString("TOKEN", "")
         val addAvailabilityRequest = AddAvailabilityRequest()
         addAvailabilityRequest.userId = userID
         addAvailabilityRequest.carId = carId
@@ -166,7 +166,7 @@ class AddAvailabilityActivity : AppCompatActivity() {
         addAvailabilityRequest.fareAmount = et_fare?.text.toString()
         addAvailabilityRequest.city = city
 
-        vm.addAvailability(addAvailabilityRequest)
+        vm.addAvailability(token.toString(), addAvailabilityRequest)
 
         vm.createAvailabilityLiveData?.observe(this, Observer {
             if (it.id != null) {

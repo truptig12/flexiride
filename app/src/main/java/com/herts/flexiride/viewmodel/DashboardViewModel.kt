@@ -29,19 +29,19 @@ class DashboardViewModel(application: Application): AndroidViewModel(application
 
 
 
-    fun fetchAllCars(i: Int) {
-        postModelListLiveData = homeRepository?.fetchAllCars(i)
+    fun fetchAllCars(token:String,i: Int) {
+        postModelListLiveData = homeRepository?.fetchAllCars(token,i)
     }
 
-    fun fetchAllBookings(i: Int) {
-        postBookingListLiveData = homeRepository?.fetchAllBookings(i)
+    fun fetchAllBookings(token:String,i: Int) {
+        postBookingListLiveData = homeRepository?.fetchAllBookings(token,i)
     }
 
-    fun acceptBooking(i: Int) {
-        acceptBookingLiveData = homeRepository?.acceptBooking(i)
+    fun acceptBooking(token:String,i: Int) {
+        acceptBookingLiveData = homeRepository?.acceptBooking(token,i)
     }
 
-    fun rejectBooking(i: Int) {
-        rejectBookingLiveData = homeRepository?.rejectBooking(i)
+    fun rejectBooking(token:String,i: Int) {
+        rejectBookingLiveData = homeRepository?.rejectBooking(token,i)
     }
 }

@@ -22,18 +22,28 @@ interface ApiInterface {
     @POST("addUser")
     fun doSignUp(@Body signUpRequest: SignupRequest): Call<SignupResponse>
 
+    @POST("login")
+    fun login(@Body signInRequest: SignInRequest): Call<SignInResponse>
+
     @POST("addCar")
-    fun addCar(@Body addCarRequest: AddCarRequest): Call<AddCarResponse>
+    fun addCar(
+        @Header("Authorization") token: String,
+        @Body addCarRequest: AddCarRequest): Call<AddCarResponse>
 
     @POST("addPackage")
-    fun addPackage(@Body addPackageRequest: AddPackageRequest): Call<AddCarResponse>
+    fun addPackage(
+        @Header("Authorization") token: String,
+        @Body addPackageRequest: AddPackageRequest): Call<AddCarResponse>
 
     @POST("addAvailability")
-    fun addAvailability(@Body addAvailabilityRequest: AddAvailabilityRequest): Call<AddCarResponse>
+    fun addAvailability(
+        @Header("Authorization") token: String,
+        @Body addAvailabilityRequest: AddAvailabilityRequest): Call<AddCarResponse>
 
     @Multipart
     @POST("updateCarImage")
     fun addCarPhotos(
+        @Header("Authorization") token: String,
         @Part("id") id: Int,
         @Part img1: MultipartBody.Part?,
         @Part img2: MultipartBody.Part?,
@@ -42,29 +52,38 @@ interface ApiInterface {
     ): Call<AddCarResponse>
 
     @POST("getCarByUserId")
-    fun fetchAllCars(@Query("id") id: Int): Call<UserCarDetailsResponse>
+    fun fetchAllCars(
+        @Header("Authorization") token: String,
+        @Query("id") id: Int): Call<UserCarDetailsResponse>
 
     @POST("findByUserId")
-    fun fetchAllBookings(@Query("id") id: Int): Call<BookingDetailsResponse>
+    fun fetchAllBookings(
+        @Header("Authorization") token: String,
+        @Query("id") id: Int): Call<BookingDetailsResponse>
 
     @POST("acceptBooking")
-    fun acceptBooking(@Query("id") id: Int): Call<SignupResponse>
+    fun acceptBooking(
+        @Header("Authorization") token: String,
+        @Query("id") id: Int): Call<SignupResponse>
 
     @POST("rejectBooking")
-    fun rejectBooking(@Query("id") id: Int): Call<SignupResponse>
+    fun rejectBooking(
+        @Header("Authorization") token: String,
+        @Query("id") id: Int): Call<SignupResponse>
 
     @POST("getAllAvailableCarOnDate")
     fun fetchAllCarsForUsers(
+        @Header("Authorization") token: String,
         @Query("city") city: String,
         @Query("fromDate") startDate: String,
         @Query("toDate") endDate: String
     ): Call<UserCarDetailsResponse>
 
-    @POST("getUserByEmail")
-    fun login(@Query("email") email: String): Call<SignInResponse>
 
     @POST("addBooking")
-    fun addBooking(@Body addBookingRequest: AddBookingRequest): Call<SignupResponse>
+    fun addBooking(
+        @Header("Authorization") token: String,
+        @Body addBookingRequest: AddBookingRequest): Call<SignupResponse>
 
 
     @POST("users/login")

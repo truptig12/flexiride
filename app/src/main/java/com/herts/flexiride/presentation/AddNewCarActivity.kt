@@ -71,6 +71,7 @@ class AddNewCarActivity : AppCompatActivity() {
     private fun callApi() {
         val sharedPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE) ?: return
         val userID = sharedPref.getInt("USER_ID", 1)
+        val token = sharedPref.getString("TOKEN", "")
         val addCarRequest = AddCarRequest()
         addCarRequest.userId = userID
         addCarRequest.brand = spinner_brand?.selectedItem.toString()
@@ -84,7 +85,7 @@ class AddNewCarActivity : AppCompatActivity() {
         addCarRequest.gearbox = spinner_gear?.selectedItem.toString()
         addCarRequest.engine = edittext_engine?.text.toString()
 
-        vm.addCar(addCarRequest)
+        vm.addCar(token.toString(),addCarRequest)
 
         vm.createPostLiveData?.observe(this, Observer {
             if (it.id != null) {
