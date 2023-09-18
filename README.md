@@ -30,8 +30,11 @@ Car details/ Book Now
 <img src="https://github.com/truptig12/flexiride/assets/143222562/56714ef6-cea4-4209-96aa-1ee464a121e0" width="150" height="300">
 <img src="https://github.com/truptig12/flexiride/assets/143222562/7ffd4f9e-695a-404d-93ca-8db055717c71" width="150" height="300">
 
-![Screenshot_20230918_194705_Flexiride](https://github.com/truptig12/flexiride/assets/143222562/7ffd4f9e-695a-404d-93ca-8db055717c71)
-![Screenshot_20230918_193441_Flexiride](https://github.com/truptig12/flexiride/assets/143222562/56714ef6-cea4-4209-96aa-1ee464a121e0)
-
 
 Owner Dashboard
+
+<img src="https://github.com/truptig12/flexiride/assets/143222562/94130937-7528-4fc8-8891-eb9a0b81d5be" width="150" height="300">
+<img src="https://github.com/truptig12/flexiride/assets/143222562/97ffead4-7ff9-4d77-be98-8deb67b5a25e" width="150" height="300">
+<img src="https://github.com/truptig12/flexiride/assets/143222562/0a73e680-6a45-412f-9312-5734a6530726" width="150" height="300">
+
+
