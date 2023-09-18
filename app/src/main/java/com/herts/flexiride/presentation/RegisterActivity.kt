@@ -2,9 +2,16 @@ package com.herts.flexiride.presentation
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.Spanned
 import android.text.TextWatcher
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -12,6 +19,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.herts.flexiride.R
@@ -44,6 +52,7 @@ class RegisterActivity : AppCompatActivity() {
 
         vm = ViewModelProvider(this)[RegisterViewModel::class.java]
 
+        makeTermsPolicyClickable()
         val button: Button = findViewById(R.id.btn_sign_up)
         val login: TextView = findViewById(R.id.text_view_already_have_an_account)
         button.setOnClickListener {
@@ -57,6 +66,59 @@ class RegisterActivity : AppCompatActivity() {
             Navigator.navigateToLoginActivity(this)
         }
 
+
+    }
+
+    private fun makeTermsPolicyClickable() {
+        val termsp = findViewById<TextView>(R.id.text_view_term_and_services)
+        var text = termsp.text.toString()
+
+        var spannableString = SpannableString(text)
+        var clickableSpan = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                callTermsDialog(1)
+            }
+        }
+
+        spannableString.setSpan(clickableSpan, 10, 27, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        spannableString.setSpan(
+            ForegroundColorSpan(
+                ContextCompat.getColor(
+                    baseContext,
+                    R.color.accent
+                )
+            ), 10, 27, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+
+        var clickablePrivacy = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                callTermsDialog(2)
+            }
+        }
+
+        spannableString.setSpan(clickablePrivacy, 32, 47, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+
+        spannableString.setSpan(
+            ForegroundColorSpan(
+                ContextCompat.getColor(
+                    baseContext,
+                    R.color.accent
+                )
+            ), 32, 47, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        termsp.setText(spannableString)
+
+        termsp.movementMethod = LinkMovementMethod.getInstance()
+
+        termsp.highlightColor = Color.TRANSPARENT
+    }
+
+    private fun callTermsDialog(i: Int) {
+        Navigator.navigateToPrivacy(this, i)
 
     }
 

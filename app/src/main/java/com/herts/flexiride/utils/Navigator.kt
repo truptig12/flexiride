@@ -12,6 +12,7 @@ import com.herts.flexiride.presentation.RegisterActivity
 import com.herts.flexiride.presentation.HomeActivity
 import com.herts.flexiride.presentation.LoginActivity
 import com.herts.flexiride.presentation.OwnerDashboard
+import com.herts.flexiride.presentation.TermsAndPrivacy
 import com.herts.flexiride.presentation.WelcomeActivity
 
 
@@ -63,5 +64,9 @@ object Navigator {
 
     fun navigateToBookingSuccess(context: Context, id: Int) {
         context.startActivity(BookingSuccess.getCallingIntent(context, id))
+    }
+
+    fun navigateToPrivacy(context: Context, id:Int ) {
+        context.startActivity(TermsAndPrivacy.getCallingIntent(context, id))
     }
 }

@@ -216,5 +216,120 @@
     <string name="your_booking_id_is">Your booking ID is</string>
     <string name="have_a_wonderful_ride">Have a wonderful ride.</string>
     <string name="Note_your_booking">Note your booking ID for future reference</string>
+    <string name="privacy">
+Privacy Policy for Flexiride App
+
+This Privacy Policy outlines how your personal information is collected, used, and protected when you use the Flexiride mobile application ("the App"). Flexiride is committed to ensuring the privacy and security of your personal data. By using the App, you consent to the practices described in this Privacy Policy.
+
+1. Information We Collect
+
+User Registration: To use the App, you will need to create an account. We collect your name, email address, phone number, and password for account registration.
+
+Vehicle Details: If you are an owner listing a vehicle, we will collect information about your vehicle, including make, model, year, license plate number, images, and availability.
+
+Location Information: We may collect your location information to provide rental options in your vicinity. You can enable or disable location services through your device settings.
+
+Transaction Data: For rental bookings and payments, we collect transaction details, including payment method, billing information, and rental history.
+
+2. How We Use Your Information
+
+We use your personal information for the following purposes:
+
+User Authentication: To create and manage your account and verify your identity when you log in.
+
+Providing Services: To facilitate car rentals, bookings, and payments between users and owners.
+
+Communication: To send important updates, notifications, and customer support responses.
+
+Improving Services: To enhance and personalize your experience, we use your data to analyze usage patterns and make improvements to the App.
+
+3. Data Protection and Security
+
+We prioritize the security of your data and employ industry-standard security measures to safeguard your information. We encrypt sensitive data and regularly update our security protocols.
+
+4. Data Retention
+
+We retain your data for as long as it is necessary to provide our services, fulfill legal obligations, or resolve disputes. When you delete your account, we securely delete your data from our systems.
+
+5. Sharing of Information
+
+We do not sell your personal information to third parties. However, we may share data with service providers, partners, or law enforcement agencies when required by law.
+
+6. Your Choices
+
+You can access, correct, or delete your personal information at any time through your account settings. You can also choose to receive or opt out of promotional emails from us.
+
+7. Changes to Privacy Policy
+
+Flexiride may update this Privacy Policy to reflect changes in our practices or for legal compliance. We will notify users of any significant changes.
+
+8. Contact Us
+
+For questions, concerns, or requests related to your privacy or this Privacy Policy, please contact us at developer@email.com.
+
+By using the Flexiride App, you acknowledge that you have read and understood this Privacy Policy and agree to its terms and conditions.</string>
+
+
+    <string name="terms"><b>Flexiride App - Terms and Conditions</b>
+
+These Terms and Conditions ("Terms") govern your use of the Flexiride mobile application ("the App"). By using the App, you agree to comply with and be bound by these Terms. If you do not agree with any part of these Terms, please do not use the App.
+
+1. User Registration
+
+1.1. To use the App, you must create an account. You agree to provide accurate and complete information during the registration process.
+
+1.2. You are responsible for maintaining the confidentiality of your account credentials, including your password. You are responsible for all activities that occur under your account.
+
+1.3. You must notify us immediately of any unauthorized use of your account or any other breach of security.
+
+2. Use of the App
+
+2.1. The App is intended for personal, non-commercial use only. You agree not to use the App for any illegal or unauthorized purpose.
+
+2.2. You may not modify, adapt, or hack the App or any associated servers.
+
+2.3. You may not attempt to gain unauthorized access to the Apps user accounts, systems, or networks.
+
+2.4. You may not harass, abuse, or harm other users of the App.
+
+3. Vehicle Listings and Rentals
+
+3.1. Vehicle Owners: If you list a vehicle on the App, you agree to provide accurate and up-to-date information about your vehicle, including make, model, year, license plate number, and images.
+
+3.2. Renters: If you rent a vehicle through the App, you agree to abide by the terms and conditions set by the vehicle owner, including rental duration, pricing, and return conditions.
+
+4. Payment and Fees
+
+4.1. Payments made through the App are processed by third-party payment providers. You agree to their terms and conditions when making payments.
+
+4.2. Flexiride may charge service fees, which will be clearly communicated to you before completing a transaction.
+
+5. Cancellations and Refunds
+
+5.1. Cancellation policies are set by vehicle owners. Flexiride is not responsible for refunds or disputes related to cancellations.
+
+6. User Conduct
+
+6.1. You agree not to use the App to transmit any content that is unlawful, offensive, or harmful.
+
+6.2. You may not engage in any activity that disrupts or impairs the Apps functionality or security.
+
+7. Termination
+
+7.1. Flexiride reserves the right to terminate or suspend your account and access to the App at any time, with or without cause.
+
+8. Privacy
+
+8.1. By using the App, you agree to the collection and use of your information as outlined in our Privacy Policy.
+
+9. Changes to Terms
+
+9.1. Flexiride may update these Terms at any time. You will be notified of significant changes. Continued use of the App after changes are made constitutes your acceptance of the new Terms.
+
+10. Contact Us
+
+10.1. For questions, concerns, or inquiries about these Terms and Conditions, please contact us at developer@email.com.
+
+By using the Flexiride App, you acknowledge that you have read, understood, and agreed to these Terms and Conditions and that you will comply with all applicable laws and regulations.</string>
 
 </resources>
