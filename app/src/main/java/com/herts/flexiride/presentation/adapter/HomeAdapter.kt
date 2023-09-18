@@ -2,19 +2,15 @@ package com.herts.flexiride.presentation.adapter
 
 import android.graphics.BitmapFactory
 import android.util.Base64
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.herts.flexiride.R
 import com.herts.flexiride.data.response.CarList
-import com.herts.flexiride.data.response.UserCarDetailsResponse
-import okhttp3.internal.trimSubstring
 
 
 class HomeAdapter(var listener: HomeListener) :
@@ -23,7 +19,13 @@ class HomeAdapter(var listener: HomeListener) :
     private var data: ArrayList<CarList>? = null
 
     interface HomeListener {
-        fun onItemView(postModel: CarList, position: Int)
+        fun onItemView(
+            postModel: Int?,
+            fromDate: String?,
+            toDate: String?,
+            fareAmount: String?,
+            position: Int
+        )
     }
 
     fun setData(list: ArrayList<CarList>) {
@@ -46,7 +48,7 @@ class HomeAdapter(var listener: HomeListener) :
         holder.bindView(item)
         holder.car_layout.setOnClickListener {
             item?.let { it1 ->
-                listener.onItemView(it1, position)
+                listener.onItemView(it1.carId,it1.fromDate, it1.toDate, it1.fareAmount,position)
             }
         }
     }

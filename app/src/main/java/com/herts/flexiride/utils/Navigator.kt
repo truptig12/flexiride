@@ -1,7 +1,6 @@
 package com.herts.flexiride.utils
 
 import android.content.Context
-import com.herts.flexiride.data.response.CarList
 import com.herts.flexiride.presentation.AddAvailabilityActivity
 import com.herts.flexiride.presentation.AddNewCarActivity
 import com.herts.flexiride.presentation.AddPackageActivity
@@ -58,8 +57,15 @@ object Navigator {
         context.startActivity(AddAvailabilityActivity.getCallingIntent(context, id, city))
     }
 
-    fun navigateToCarDetailsActivity(context: Context, car: CarList, leftDays: String) {
-        context.startActivity(CarDetailsActivity.getCallingIntent(context, car, leftDays))
+    fun navigateToCarDetailsActivity(
+        context: Context,
+        car: Int?,
+        fromDate: String?,
+        toDate: String?,
+        fareAmount: String?,
+        leftDays: String
+    ) {
+        context.startActivity(CarDetailsActivity.getCallingIntent(context, car, fromDate, toDate, fareAmount,leftDays))
     }
 
     fun navigateToBookingSuccess(context: Context, id: Int) {

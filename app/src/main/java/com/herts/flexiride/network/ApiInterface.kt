@@ -8,6 +8,7 @@ import com.herts.flexiride.model.SignInRequest
 import com.herts.flexiride.data.request.SignupRequest
 import com.herts.flexiride.data.response.AddCarResponse
 import com.herts.flexiride.data.response.BookingDetailsResponse
+import com.herts.flexiride.data.response.CarList
 import com.herts.flexiride.data.response.SignInResponse
 import com.herts.flexiride.data.response.SignupResponse
 import com.herts.flexiride.data.response.UserCarDetailsResponse
@@ -99,5 +100,11 @@ interface ApiInterface {
         @Part image: MultipartBody.Part?,
         @Part("title") name: RequestBody?
     ): Call<ResponseBody>
+
+    @POST("getCarById")
+    fun getCarDetails(
+        @Header("Authorization") token: String,
+        @Query("id") id: Int): Call<CarList>
+
 
 }

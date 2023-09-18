@@ -8,6 +8,7 @@ import com.herts.flexiride.data.request.AddBookingRequest
 import com.herts.flexiride.data.request.AddPackageRequest
 import com.herts.flexiride.data.request.AddCarRequest
 import com.herts.flexiride.data.response.AddCarResponse
+import com.herts.flexiride.data.response.CarList
 import com.herts.flexiride.data.response.SignupResponse
 import com.herts.flexiride.network.ApiClient
 import com.herts.flexiride.network.ApiInterface
@@ -78,23 +79,23 @@ class BookingRepository {
 
     }
 
-   /* fun addAvailability(addAvailabilityRequest: AddAvailabilityRequest): LiveData<AddCarResponse> {
-        val data = MutableLiveData<AddCarResponse>()
+    fun getCarDetails(token:String,i: Int): LiveData<CarList> {
+        val data = MutableLiveData<CarList>()
 
-        apiInterface?.addAvailability(addAvailabilityRequest)
-            ?.enqueue(object : Callback<AddCarResponse> {
-                override fun onFailure(call: Call<AddCarResponse>, t: Throwable) {
+        apiInterface?.getCarDetails(token,i)
+            ?.enqueue(object : Callback<CarList> {
+                override fun onFailure(call: Call<CarList>, t: Throwable) {
                     data.value = null
                 }
 
                 override fun onResponse(
-                    call: Call<AddCarResponse>,
-                    response: Response<AddCarResponse>
+                    call: Call<CarList>,
+                    response: Response<CarList>
                 ) {
                     val res = response.body()
                     if (response.code() == 200 && res != null) {
                         data.value = res
-                        Log.d("res", res.id.toString())
+                        Log.d("res", res.carId.toString())
                     } else {
                         data.value = null
                     }
@@ -103,7 +104,7 @@ class BookingRepository {
 
         return data
 
-    }*/
+    }
 
    /* fun addCarPhotos(
         i: Int,

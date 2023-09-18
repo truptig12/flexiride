@@ -37,14 +37,31 @@ class CarDetailsActivity : AppCompatActivity(), ImagesAdapter.onItemClick {
     var image: ImageView? = null
     var bookingAmount: Float = 0F
     var noOfDays: Int = 1
+    var fromDate: String = ""
+    var toDate: String = ""
+    var fare: String = ""
+    var carId: Int = 0
 
     companion object {
         var CAR_DETAILS: String = "CAR_DETAILS"
         var NO_OF_DAYS: String = "NO_OF_DAYS"
-        fun getCallingIntent(context: Context, car: CarList, leftDays: String): Intent {
+        var FROM_DATE: String = "FROM_DATE"
+        var TO_DATE: String = "TO_DATE"
+        var FARE: String = "FARE"
+        fun getCallingIntent(
+            context: Context,
+            car: Int?,
+            fromDate: String?,
+            toDate: String?,
+            fareAmount: String?,
+            leftDays: String
+        ): Intent {
             val intent = Intent(context, CarDetailsActivity::class.java)
             intent.putExtra(CAR_DETAILS, car)
             intent.putExtra(NO_OF_DAYS, leftDays)
+            intent.putExtra(FROM_DATE, fromDate)
+            intent.putExtra(TO_DATE, toDate)
+            intent.putExtra(FARE, fareAmount)
             return intent
         }
     }
@@ -55,14 +72,50 @@ class CarDetailsActivity : AppCompatActivity(), ImagesAdapter.onItemClick {
         vm = ViewModelProvider(this)[BookingViewModel::class.java]
         val bundle = intent.extras
         if (bundle != null) {
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                dta = intent.getSerializableExtra(CAR_DETAILS, CarList::class.java)
+//                dta = intent.getSerializableExtra(CAR_DETAILS, CarList::class.java)
+                carId = intent.getIntExtra(CAR_DETAILS, 0)
+
                 noOfDays = intent.getStringExtra(NO_OF_DAYS)!!?.toInt()!!
+                fromDate = intent.getStringExtra(FROM_DATE)!!
+                toDate = intent.getStringExtra(TO_DATE)!!
+                fare = intent.getStringExtra(FARE)!!
             } else {
-                dta = intent.getSerializableExtra(CAR_DETAILS) as CarList
+                carId = intent.getIntExtra(CAR_DETAILS, 0)
+
+//                dta = intent.getSerializableExtra(CAR_DETAILS) as CarList
                 noOfDays = intent.getStringExtra(NO_OF_DAYS)!!?.toInt()!!
+                fromDate = intent.getStringExtra(FROM_DATE)!!
+                toDate = intent.getStringExtra(TO_DATE)!!
+                fare = intent.getStringExtra(FARE)!!
             }
         }
+
+        callCarDetailsApi(carId)
+
+
+    }
+
+    private fun callCarDetailsApi(id: Int) {
+        val sharedPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE) ?: return
+        val userID = sharedPref.getInt("USER_ID", 1)
+        val token = sharedPref.getString("TOKEN", "")
+        vm.getCarDetails(token.toString(), id)
+        vm.createAvailabilityLiveData?.observe(this, Observer {
+            if (it != null) {
+                dta = it
+                settingDataAfterCar()
+
+            } else {
+
+            }
+
+        })
+    }
+
+    private fun settingDataAfterCar() {
+//        settingDataAfterCar()
         image = findViewById<ImageView>(R.id.image)
         image?.clipToOutline = true
         val decodedString: ByteArray = Base64.decode(dta?.image1, Base64.DEFAULT)
@@ -75,6 +128,7 @@ class CarDetailsActivity : AppCompatActivity(), ImagesAdapter.onItemClick {
             callApi()
         }
     }
+
 
     private fun callApi() {
         val sharedPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE) ?: return
@@ -146,6 +200,9 @@ class CarDetailsActivity : AppCompatActivity(), ImagesAdapter.onItemClick {
         engine.setText(dta?.engine)
         val txt_pk = findViewById<TextView>(R.id.txt_pk)
         txt_pk.setText("£" + dta?.fareAmount + " / hour")
+        dta?.fareAmount = fare
+        dta?.fromDate = fromDate
+        dta?.toDate = toDate
 
         val pd = findViewById<TextView>(R.id.pd)
         val amt = dta?.fareAmount?.toFloat()?.times(24)
@@ -155,7 +212,7 @@ class CarDetailsActivity : AppCompatActivity(), ImagesAdapter.onItemClick {
         val xx = findViewById<TextView>(R.id.xx)
         val tt = amt?.times(noOfDays)
         xx.setText("£ " + tt.toString())
-        bookingAmount = tt!!
+        bookingAmount = tt.toString().toFloat()
 
         imageSliderImplementation()
         setImageAdapter()

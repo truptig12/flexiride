@@ -175,8 +175,14 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.HomeListener {
         rv_home?.adapter = adapter
     }
 
-    override fun onItemView(postModel: CarList, position: Int) {
-        Navigator.navigateToCarDetailsActivity(this, postModel, leftDays)
+    override fun onItemView(
+        postModel: Int?,
+        fromDate: String?,
+        toDate: String?,
+        fareAmount: String?,
+        position: Int
+    ) {
+        Navigator.navigateToCarDetailsActivity(this, postModel, fromDate, toDate, fareAmount, leftDays)
 
     }
 
