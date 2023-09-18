@@ -216,6 +216,25 @@
     <string name="your_booking_id_is">Your booking ID is</string>
     <string name="have_a_wonderful_ride">Have a wonderful ride.</string>
     <string name="Note_your_booking">Note your booking ID for future reference</string>
+
+    <string name="disclaimer">Insurance Verification Disclaimer
+
+The Flexiride App ("the App") provides a platform for vehicle owners to list their cars for rental and for renters to find and book vehicles. While we strive to ensure a safe and reliable experience, we want to make it clear that the App does not verify or validate insurance details provided by users.
+
+User Responsibility:
+
+Verification: All users are responsible for independently verifying the insurance coverage of any vehicle they intend to rent or list on the App. This includes ensuring that the insurance policy covers the intended use, drivers, and circumstances.
+
+Liability: Flexiride does not assume any responsibility for insurance-related matters between users. Any insurance claims, disputes, or issues that may arise are solely the responsibility of the parties involved.
+
+Compliance: Users must comply with all local, state, and national laws and regulations related to insurance requirements for vehicle rentals.
+
+Seek Professional Advice:
+
+If you have any questions or concerns about insurance coverage or requirements, we strongly recommend seeking advice from a qualified insurance professional. Flexiride does not provide insurance advice or services.
+
+By using the App, you acknowledge and agree to the terms of this insurance verification disclaimer. It is your responsibility to exercise due diligence and ensure that you are adequately covered by insurance when using the App for vehicle rentals or listings.</string>
+
     <string name="privacy">
 Privacy Policy for Flexiride App
 
