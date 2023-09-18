@@ -22,8 +22,16 @@ Add new Car details
 
 Search Cars
 
+<img src="https://github.com/truptig12/flexiride/assets/143222562/60856390-0481-4008-beed-a4a49fdef8eb" width="150" height="300">
+<img src="https://github.com/truptig12/flexiride/assets/143222562/f9efc0bc-41b9-4bc8-a14a-4fa1badaefa7" width="150" height="300">
 
 Car details/ Book Now
+
+<img src="https://github.com/truptig12/flexiride/assets/143222562/56714ef6-cea4-4209-96aa-1ee464a121e0" width="150" height="300">
+<img src="https://github.com/truptig12/flexiride/assets/143222562/7ffd4f9e-695a-404d-93ca-8db055717c71" width="150" height="300">
+
+![Screenshot_20230918_194705_Flexiride](https://github.com/truptig12/flexiride/assets/143222562/7ffd4f9e-695a-404d-93ca-8db055717c71)
+![Screenshot_20230918_193441_Flexiride](https://github.com/truptig12/flexiride/assets/143222562/56714ef6-cea4-4209-96aa-1ee464a121e0)
 
 
 Owner Dashboard
